@@ -1,7 +1,3 @@
-Done. I’ve stripped out the emojis from the headers and the Mermaid graph nodes to give it a cleaner, more professional documentation look.
-
----
-
 # TREC Protocol: Trustless Reputation and Evaluation Credit
 
 **Bridging DeFi Liquidity to AI Agent Economy via ERC-8004 and Soulbound Identity**
