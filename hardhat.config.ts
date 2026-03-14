@@ -7,16 +7,21 @@ const PRIVATE_KEY = process.env.DEPLOYER_PRIVATE_KEY;
 const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL || "";
 
 const config: HardhatUserConfig = {
+  // THE FIX: Explicitly target the Cancun EVM so mcopy works
   solidity: {
     version: "0.8.24",
     settings: {
       evmVersion: "cancun",
-    },
+      optimizer: {
+        enabled: true,
+        runs: 200
+      }
+    }
   },
   networks: {
-    sepolia: {
-      url: SEPOLIA_RPC_URL,
-      accounts: PRIVATE_KEY && PRIVATE_KEY.length === 66 ? [PRIVATE_KEY] : [],
+    baseSepolia: {
+      url: process.env.BASE_SEPOLIA_RPC || "https://sepolia.base.org",
+      accounts: process.env.PRIVATE_KEY ? [`0x${process.env.PRIVATE_KEY.replace('0x', '')}`] : [],
     },
   },
 };
